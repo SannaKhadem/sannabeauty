@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SannaBeauty Clinic</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="treatment-page">
+  <%- include('partials/header') %>
+
+  <section class="treatment-list">
+    <h2>Våra behandlingar i detalj</h2>
+    <div class="treatment-grid">
+      <a href="/behandlingar/botox" class="treatment-box">
+        <img src="https://via.placeholder.com/400x250/eeeeee/aaaaaa?text=Botox" alt="Botox placeholder">
+        <div class="treatment-content">
+          <h3>Botox</h3>
+          <p>Botox-behandling för att motverka rynkor och ge ett fräscht, avslappnat uttryck.</p>
+        </div>
+      </a>
+
+      <a href="/behandlingar/filler" class="treatment-box">
+        <img src="https://via.placeholder.com/400x250/eeeeee/aaaaaa?text=Filler" alt="Filler placeholder">
+        <div class="treatment-content">
+          <h3>Filler</h3>
+          <p>Filler för att återställa volym och kontur med naturligt resultat.</p>
+        </div>
+      </a>
+
+      <a href="/behandlingar/skinbooster" class="treatment-box">
+        <img src="https://via.placeholder.com/400x250/eeeeee/aaaaaa?text=Skinbooster" alt="Skinbooster placeholder">
+        <div class="treatment-content">
+          <h3>Skinbooster</h3>
+          <p>Skinbooster som ger djupverkande fukt och lyster åt huden.</p>
+        </div>
+      </a>
+
+      <a href="/behandlingar/ansiktsbehandling" class="treatment-box">
+        <img src="https://via.placeholder.com/400x250/eeeeee/aaaaaa?text=Ansiktsbehandling" alt="Ansiktsbehandling placeholder">
+        <div class="treatment-content">
+          <h3>Ansiktsbehandling</h3>
+          <p>En rengörande och återfuktande ansiktsbehandling som ger huden ny lyster.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

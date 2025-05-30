@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Image</title>
+</head>
+<body>
+  <h1>Upload New Image</h1>
+
+  <form action="/admin/upload" method="POST" enctype="multipart/form-data">
+    <label for="image">Select image:</label>
+    <input type="file" name="image" id="image" required>
+    
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description" placeholder="Optional description">
+
+    <button type="submit">Upload</button>
+  </form>
+
+  <p><a href="/admin/dashboard">Go to dashboard</a></p>
+</body>
+</html>

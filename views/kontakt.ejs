@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SannaBeauty Clinic</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="kontakt-page">
+  <%- include('partials/header') %>
+  
+ <div class="contact-container">
+  <h2>Kontakta oss</h2>
+
+  <form action="/kontakt" method="POST" class="contact-form">
+    <label for="name">Namn:</label>
+    <input type="text" name="name" required>
+
+    <label for="email">E-post:</label>
+    <input type="email" name="email" required>
+
+    <label for="subject">Ämne:</label>
+    <input type="text" name="subject" required>
+
+    <label for="message">Meddelande:</label>
+    <textarea name="message" rows="5" required></textarea>
+
+    <button type="submit">Skicka</button>
+  </form>
+</div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

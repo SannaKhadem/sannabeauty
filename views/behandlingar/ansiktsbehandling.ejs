@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ansiktsbehandling – SannaBeauty Clinic</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/beerslider/dist/BeerSlider.min.css">
+  <style>
+    .beer-slider {
+      max-width: 600px;
+      margin: 40px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    }
+    .treatment-detail {
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body class="treatment-page">
+  <%- include('../partials/header') %>
+
+  <section class="treatment-detail">
+    <h2>Ansiktsbehandling</h2>
+    <p>En avslappnande ansiktsbehandling som rengör, återfuktar och förnyar din hud. Perfekt för dig som vill få ett fräscht lyster och ta hand om din hud på djupet.</p>
+  </section>
+
+  <section class="treatment-detail">
+    <%
+      const grouped = {};
+
+      // Group images by number and type (före or efter)
+      images.forEach(img => {
+        const match = img.description.toLowerCase().match(/ansiktsbehandling\s+(före|efter)\s*(\d+)/);
+        if (match) {
+          const type = match[1];
+          const group = match[2];
+          if (!grouped[group]) grouped[group] = {};
+          grouped[group][type] = img;
+        }
+      });
+
+      const sortedGroups = Object.entries(grouped).sort(([a], [b]) => a - b);
+    %>
+
+    <% if (sortedGroups.length === 0) { %>
+      <p>Inga kompletta före-och-efter bilder hittades.</p>
+    <% } else { %>
+      <% sortedGroups.forEach(([groupId, pair]) => {
+        if (pair.före && pair.efter) { %>
+          <div class="beer-slider" data-beer-label="Före">
+            <img src="<%= pair.före.path %>" alt="före <%= groupId %>" />
+            <div class="beer-reveal" data-beer-label="Efter">
+              <img src="<%= pair.efter.path %>" alt="efter <%= groupId %>" />
+            </div>
+          </div>
+      <% } }) %>
+    <% } %>
+  </section>
+
+  <%- include('../partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/beerslider/dist/BeerSlider.min.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.beer-slider').forEach(slider => new BeerSlider(slider));
+    });
+  </script>
+</body>
+</html>
