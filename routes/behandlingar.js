@@ -18,7 +18,8 @@ treatments.forEach(treatment => {
       const images = await Image.find({ description: new RegExp(treatment, 'i') });
 
       // Render the corresponding view with the images
-      res.render(`behandlingar/${treatment}`, { images });
+      res.render(`behandlingar/${treatment}`, { images,
+  currentPage: 'behandlingar'});
     } catch (error) {
       console.error(`Failed to load ${treatment} images:`, error);
       res.status(500).send('Error loading images');

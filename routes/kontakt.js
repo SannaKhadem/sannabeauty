@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/tack', (req, res) => {
-  res.render('kontakt-tack');
+  res.render('kontakt/tack');
 });
 
 module.exports = router;
