@@ -11,13 +11,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "dotenv": "^16.5.0",
+    "dotenv": "^17.2.1",
     "ejs": "^3.1.10",
     "ejs-locals": "^1.0.2",
     "ejs-mate": "^4.0.0",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
-    "mongoose": "^8.15.0",
+    "mongoose": "^8.17.2",
     "multer": "^2.0.0",
     "sannabeautyprojekt": "file:"
   }
