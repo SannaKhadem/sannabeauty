@@ -1,7 +1,7 @@
 {
   "name": "sannabeautyprojekt",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,16 +9,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "SannaBeauty Clinic web project",
   "dependencies": {
+    "concat-stream": "^2.0.0",
     "dotenv": "^17.2.1",
     "ejs": "^3.1.10",
     "ejs-locals": "^1.0.2",
     "ejs-mate": "^4.0.0",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
-    "mongoose": "7.6.3",
-    "multer": "^2.0.0",
-    "sannabeautyprojekt": "file:"
+    "mongoose": "^8.17.2",
+    "multer": "^2.0.2",
+    "readable-stream": "^4.7.0"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
