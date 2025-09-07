@@ -75,7 +75,7 @@ body {
   margin: 0;
   padding: 0;
   color: #070207;
-  background: linear-gradient(to bottom, #c684bb 0%, #070207 100%);
+  background: linear-gradient(to bottom, #e8bcf9 0%, #6c3483 100%);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -156,7 +156,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #8a629b;
+  color: #b116f3;
   text-shadow: 1px 1px 2px rgba(52,40,51,0.2);
 }
 
@@ -473,7 +473,7 @@ nav a:hover {
   max-width: 600px;
   margin: 50px auto;
   padding: 36px 32px;
-  background: linear-gradient(135deg, #e9dfff 0%, #dca3da 100%);
+  background: linear-gradient(135deg, #e1aedc 0%, #ab86b9 100%);
   border-radius: 24px;
   box-shadow: 0 8px 32px rgba(108, 52, 131, 0.13);
   backdrop-filter: blur(6px);
