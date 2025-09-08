@@ -580,27 +580,29 @@ nav a:hover {
 }
 
 .back-link {
-  padding: 12px 32px;
-  font-size: 20px;
-  border-radius: 30px;
+  padding: 8px 18px;
+  font-size: 15px;
+  border-radius: 24px;
   background: linear-gradient(90deg,#a084ca 0%,#6c3483 100%);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(108,52,131,0.10);
-  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(108,52,131,0.10);
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  transition: background 0.3s,box-shadow 0.3s,transform 0.2s;
+  gap: 8px;
+  margin-left: 0;
+  margin-top: 24px;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
 }
 
 .back-link:hover {
   background: linear-gradient(90deg, #6c3483 0%, #a084ca 100%);
   color: #ffe6ff;
-  box-shadow: 0 8px 32px rgba(108,52,131,0.22);
-  transform: translateY(-2px) scale(1.07);
+  box-shadow: 0 4px 16px rgba(108,52,131,0.18);
+  transform: translateY(-2px) scale(1.04);
 }
 
 .back-link-container {
@@ -608,7 +610,8 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 32px; /* or adjust as needed */
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 /* about section */
@@ -658,19 +661,59 @@ body.about-page {
 }
 
 /* Map section */
+
 .map-container {
+  display: block;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-  padding: 0 20px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 28px;
+  margin-bottom: 48px;
+  padding: 24px 18px 18px 18px;
   box-sizing: border-box;
+  text-align: center;
+  background: linear-gradient(135deg, #f8f6ff 0%, #e8bcf9 100%);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(108,52,131,0.13);
+  border: 1.5px solid #a084ca44;
+  position: relative;
+}
+
+.map-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.map-header i {
+  font-size: 32px;
+  color: #6c3483;
+  margin-bottom: 6px;
+}
+.map-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #6c3483;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+.map-address {
+  font-size: 16px;
+  color: #482256;
+  margin-bottom: 2px;
 }
 
 .map-container iframe {
-  max-width: 100%;
+  width: 100%;
+  min-width: 280px;
+  max-width: 480px;
+  min-height: 220px;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(108,52,131,0.10);
+  border: none;
 }
 
 
