@@ -7,7 +7,7 @@ const Image = require("../models/Image");
 const fs = require("fs");
 const path = require("path");
 
-// GET: Show upload form
+// GET: Show upload form (single + paired)
 router.get("/upload", (req, res) => {
   res.render("admin/upload");
 });
@@ -15,16 +15,45 @@ router.get("/upload", (req, res) => {
 // POST: Handle image upload
 router.post("/upload", upload.single("image"), async (req, res) => {
   try {
-    const newImage = new Image({
+    const { description, treatment, phase, group } = req.body;
+    const doc = new Image({
       filename: req.file.filename,
       path: `/uploads/${req.file.filename}`,
-      description: req.body.description || "",
+      description: description || "",
+      treatment: treatment || undefined,
+      phase: phase || undefined,
+      group: group ? parseInt(group, 10) : undefined,
     });
-    await newImage.save();
+    await doc.save();
     res.redirect("/admin/dashboard");
   } catch (error) {
     console.error("Upload failed:", error);
     res.status(500).send("Something went wrong while uploading the image.");
+  }
+});
+
+// POST: Paired before/after upload (two files)
+router.post("/upload/pair", upload.fields([
+  { name: 'före', maxCount: 1 },
+  { name: 'efter', maxCount: 1 },
+]), async (req, res) => {
+  try {
+    const { treatment, group } = req.body;
+    if (!treatment) return res.status(400).send('Missing treatment');
+    const groupNum = group ? parseInt(group, 10) : Math.floor(Date.now() / 1000);
+    const beforeFile = req.files['före']?.[0];
+    const afterFile = req.files['efter']?.[0];
+    if (!beforeFile || !afterFile) return res.status(400).send('Both före and efter images required');
+
+    const docs = [
+      new Image({ filename: beforeFile.filename, path: `/uploads/${beforeFile.filename}`, treatment, phase: 'före', group: groupNum }),
+      new Image({ filename: afterFile.filename, path: `/uploads/${afterFile.filename}`, treatment, phase: 'efter', group: groupNum }),
+    ];
+    await Image.insertMany(docs);
+    res.redirect('/admin/dashboard');
+  } catch (e) {
+    console.error('Paired upload failed:', e);
+    res.status(500).send('Failed paired upload');
   }
 });
 

@@ -34,19 +34,24 @@
   <section class="treatment-detail">
     <%
       const grouped = {};
-
-      // Group images by number and type (före or efter)
       images.forEach(img => {
-        const match = img.description.toLowerCase().match(/botox\s+(före|efter)\s*(\d+)/);
-        if (match) {
-          const type = match[1];
-          const group = match[2];
+        let treatment = img.treatment;
+        let phase = img.phase;
+        let group = img.group;
+        if (!treatment || !phase) {
+          const parsed = img.parsed; // virtual
+            if (parsed) {
+              treatment = parsed.treatment;
+              phase = parsed.phase;
+              group = parsed.group;
+            }
+        }
+        if (treatment === 'botox' && phase && group != null) {
           if (!grouped[group]) grouped[group] = {};
-          grouped[group][type] = img;
+          grouped[group][phase] = img;
         }
       });
-
-      const sortedGroups = Object.entries(grouped).sort(([a], [b]) => a - b);
+      const sortedGroups = Object.entries(grouped).sort(([a],[b]) => a - b);
     %>
 
     <% if (sortedGroups.length === 0) { %>
@@ -54,12 +59,12 @@
     <% } else { %>
       <% sortedGroups.forEach(([groupId, pair]) => {
         if (pair.före && pair.efter) { %>
-          <div class="beer-slider" data-beer-label="Före">
-            <img src="<%= pair.före.path %>" alt="före <%= groupId %>" />
-            <div class="beer-reveal" data-beer-label="Efter">
+            <div class="beer-slider" data-beer-label="Efter">
               <img src="<%= pair.efter.path %>" alt="efter <%= groupId %>" />
+              <div class="beer-reveal" data-beer-label="Före">
+                <img src="<%= pair.före.path %>" alt="före <%= groupId %>" />
+              </div>
             </div>
-          </div>
       <% } }) %>
     <% } %>
   </section>

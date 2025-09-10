@@ -1,22 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <title>Upload Image</title>
+  <title>Ladda upp bilder</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; background:#faf5fc; }
+    h1 { margin-top:0; }
+    fieldset { border:1px solid #ccc; border-radius:10px; margin-bottom:30px; padding:20px; background:#fff; }
+    legend { font-weight:700; padding:0 10px; }
+    label { display:block; margin-top:12px; font-weight:600; }
+    input[type=text], select, input[type=number] { padding:8px; width:100%; max-width:400px; }
+    input[type=file]{ margin-top:6px; }
+    button { margin-top:18px; background:linear-gradient(90deg,#a084ca,#6c3483); color:#fff; border:none; padding:10px 22px; border-radius:24px; cursor:pointer; }
+    button:hover { filter:brightness(1.1); }
+    .note { font-size:12px; color:#555; }
+    a { color:#6c3483; }
+  </style>
 </head>
 <body>
-  <h1>Upload New Image</h1>
-
+  <h1>Ladda upp en bild</h1>
   <form action="/admin/upload" method="POST" enctype="multipart/form-data">
-    <label for="image">Select image:</label>
-    <input type="file" name="image" id="image" required>
-    
-    <label for="description">Description:</label>
-    <input type="text" name="description" id="description" placeholder="Optional description">
+    <label for="image">Välj bild:</label>
+    <input type="file" name="image" id="image" required accept="image/jpeg,image/png">
 
-    <button type="submit">Upload</button>
+
+    <label for="treatment">Behandling (t.ex. botox, filler):</label>
+    <input type="text" name="treatment" id="treatment" placeholder="botox" />
+
+    <label for="phase">Fas (före / efter):</label>
+    <select name="phase" id="phase">
+      <option value="">(ingen)</option>
+      <option value="före">Före</option>
+      <option value="efter">Efter</option>
+    </select>
+
+    <label for="group">Gruppnummer (för att para ihop):</label>
+    <input type="number" name="group" id="group" placeholder="1" min="1" />
+
+    <label for="description">Beskrivning (valfri / legacy):</label>
+    <input type="text" name="description" id="description" placeholder="t.ex. botox före 1" />
+
+
+    <button type="submit">Ladda upp</button>
+    <p class="note">Fyll i behandling, fas och grupp för att bilden ska visas i rätt par på hemsidan.</p>
   </form>
-
-  <p><a href="/admin/dashboard">Go to dashboard</a></p>
+  <p><a href="/admin/dashboard">Till dashboard</a></p>
 </body>
 </html>
