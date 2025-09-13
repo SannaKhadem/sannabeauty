@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Ladda upp bilder</title>
+  <!-- Removed cropper stylesheet (no in-browser editing needed) -->
   <style>
     body { font-family: Arial, sans-serif; padding: 30px; background:#faf5fc; }
     h1 { margin-top:0; }
@@ -23,7 +24,6 @@
     <label for="image">Välj bild:</label>
     <input type="file" name="image" id="image" required accept="image/jpeg,image/png">
 
-
     <label for="treatment">Behandling (t.ex. botox, filler):</label>
     <input type="text" name="treatment" id="treatment" placeholder="botox" />
 
@@ -40,10 +40,10 @@
     <label for="description">Beskrivning (valfri / legacy):</label>
     <input type="text" name="description" id="description" placeholder="t.ex. botox före 1" />
 
-
     <button type="submit">Ladda upp</button>
     <p class="note">Fyll i behandling, fas och grupp för att bilden ska visas i rätt par på hemsidan.</p>
   </form>
   <p><a href="/admin/dashboard">Till dashboard</a></p>
+  <!-- Removed in-browser cropping script -->
 </body>
 </html>
