@@ -471,7 +471,6 @@ nav a:hover {
   width: 100%;
 }
 
-
 .before-after {
   display: flex;
   gap: 20px;
@@ -896,3 +895,36 @@ footer .copyright {
     width: 80%;
   }
 }
+
+/* --- BeerSlider Mobile / Touch Fixes --- */
+/* Improve sliding responsiveness on touch devices */
+.beer-slider, .beer-slider * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none; /* Safari */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent the page from scrolling while the user drags inside the slider */
+.beer-slider {
+  touch-action: none; /* Disable default pan to allow smooth horizontal drag */
+  position: relative;
+}
+
+/* Ensure images don't capture unintended drag gestures */
+.beer-slider img {
+  pointer-events: none; /* let the handle / container capture gestures */
+}
+
+/* If the library injects a handle element, make it easier to grab */
+[class*="handle" i] {
+  touch-action: none;
+}
+
+@media (max-width: 768px) {
+  .beer-slider {
+    max-width: 100% !important;
+    width: 100%;
+  }
+}
+
