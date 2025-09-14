@@ -907,14 +907,15 @@ footer .copyright {
 
 /* Prevent the page from scrolling while the user drags inside the slider */
 .beer-slider {
-  touch-action: none; /* Disable default pan to allow smooth horizontal drag */
+  /* Allow vertical page scroll while still enabling horizontal slider interaction */
+  touch-action: pan-y; /* pan-y keeps vertical scrolling; horizontal events still reach range input */
   position: relative;
 }
 
-/* Ensure images don't capture unintended drag gestures */
-.beer-slider img {
-  pointer-events: none; /* let the handle / container capture gestures */
-}
+/* Default BeerSlider generated elements (range + handle) */
+/* (Removed custom handle styling to preserve original BeerSlider appearance) */
+
+
 
 /* If the library injects a handle element, make it easier to grab */
 [class*="handle" i] {
